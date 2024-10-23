@@ -1,10 +1,10 @@
 <?php
   // Variables
   return [
-    "creatorName" => "ThemeSelection",
+    "creatorName" => "xVx",
     "creatorUrl" => "https://themeselection.com",
-    "templateName" => "Materio",
-    "templateSuffix" => "Bootstrap 5 HTML Laravel Free Admin Template",
+    "templateName" => "Panel",
+    "templateSuffix" => "Panel",
     "templateVersion" => "1.0.0",
     "templateFree" => true,
     "templateDescription" => "Most Powerful & Comprehensive Bootstrap 5 HTML Admin Dashboard Template built for developers!",

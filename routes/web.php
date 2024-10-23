@@ -43,6 +43,10 @@ use App\Http\Controllers\form_elements\InputGroups;
 use App\Http\Controllers\form_layouts\VerticalForm;
 use App\Http\Controllers\form_layouts\HorizontalForm;
 use App\Http\Controllers\tables\Basic as TablesBasic;
+use App\Http\Controllers\FaultController;
+use App\Http\Controllers\MachineController;
+
+
 
 // Main Page Route
 Route::get('/', [Analytics::class, 'index'])->name('dashboard-analytics');
@@ -107,3 +111,20 @@ Route::get('/form/layouts-horizontal', [HorizontalForm::class, 'index'])->name('
 
 // tables
 Route::get('/tables/basic', [TablesBasic::class, 'index'])->name('tables-basic');
+
+
+ //fault
+Route::get('/fault/create', [FaultController::class, 'create'])->name('fault.create');
+Route::post('/fault/store', [FaultController::class, 'store'])->name('fault.store');
+Route::get('/fault', [FaultController::class, 'index'])->name('fault.index');
+Route::get('/fault/{id}/edit', [FaultController::class, 'edit'])->name('fault.edit');
+Route::post('/fault/{id}/update', [FaultController::class, 'update'])->name('fault.update');
+
+
+//machines
+
+Route::get('/machine/create', [MachineController::class,'create'])->name('machine.create');
+Route::get('/machine/store', [MachineController::class,'create'])->name('machine.store');
+Route::get('/machine/', [MachineController::class,'create'])->name('machine.index');
+Route::get('/machine/{id}/edit', [MachineController::class,'create'])->name('machine.edit');
+Route::get('/machine/{id}/update', [MachineController::class,'create'])->name('machine.update');

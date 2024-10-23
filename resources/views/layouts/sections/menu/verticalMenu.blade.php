@@ -62,7 +62,9 @@
         @endisset
         <div>{{ isset($menu->name) ? __($menu->name) : '' }}</div>
         @isset($menu->badge)
+        @if (isset($menu->badge) && is_array($menu->badge) && isset($menu->badge[0]) && isset($menu->badge[1]))
         <div class="badge bg-{{ $menu->badge[0] }} rounded-pill ms-auto">{{ $menu->badge[1] }}</div>
+    @endif
 
         @endisset
       </a>

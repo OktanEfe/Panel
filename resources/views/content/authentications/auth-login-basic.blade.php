@@ -22,6 +22,7 @@
           </a>
         </div>
         <!-- /Logo -->
+        <img src="{{ asset('assets/img/backgrounds/kordsa.png.webp') }}" alt="Logo" style="width: 150px;">
 
         <div class="card-body mt-2">
           <h4 class="mb-2">Welcome to {{config('variables.templateName')}}! 👋</h4>
