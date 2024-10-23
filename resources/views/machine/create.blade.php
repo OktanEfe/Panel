@@ -1,5 +1,5 @@
 @extends('layouts/contentNavbarLayout')
-
+sdgdh
 @section('title', 'Makine Arıza Kaydı Oluştur')
 @section('content')
 <div class="container">
