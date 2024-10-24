@@ -50,7 +50,6 @@
             $activeClass = 'active open';
           }
         }
-asdasdasddas
       }
     @endphp
 

@@ -71,7 +71,7 @@
           "slug": "laravel-example-user-management"
         },
         {
-          "url": "https://demos.themeselection.com/materio-bootstrap-html-laravel-admin-template/demo-1/laravel/user-management",
+          "url": "machine/{$id}/edit",
           "name": "Edit",
           "slug": "laravel-example-user-management",
           "target": "_blank"

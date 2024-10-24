@@ -8,26 +8,26 @@ class MachineController extends Controller
 {
     public function create()
     {
-        return view('machine.create');
+        return view('pages.machine.create');
     }
 
     public function store()
     {
-        return view('machine.store');
+        return view('pages.machine.store');
     }
 
     public function index()
     {
-        return view('machine.index');
+        return view('pages.machine.index');
     }
 
     public function edit($id)
     {
-        return view('machine.edit', ['id' => $id]);
+        return view('pages.machine.edit', ['id' => $id]);
     }
 
     public function update($id)
     {
-        return view('machine.update', ['id' => $id]);
+        return view('pages.machine.update', ['id' => $id]);
     }
 }
