@@ -32,6 +32,8 @@
             </div>
           </div>
 
+
+
           <div class="form-password-toggle">
             <label class="form-label" for="surname">Surname</label>
             <div class="input-group input-group-merge">
@@ -41,7 +43,7 @@
           <div class="form-password-toggle">
             <label class="form-label" for="surname">Phone Number</label>
             <div class="input-group input-group-merge">
-              <input type="text" class="form-control" id="surname" name="surname" required />             </div>
+              <input type="text" class="form-control" id="surname" name="surname" required />
           </div>
 
           <div class="form-password-toggle">
