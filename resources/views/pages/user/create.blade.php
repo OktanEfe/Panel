@@ -23,7 +23,7 @@
             </ul>
           </div>
         @endif
-        <form action="{{ route('users.store') }}" method="POST">
+        <form action="{{ route('user.store') }}" method="POST">
           @csrf
           <div class="form-password-toggle">
             <label class="form-label" for="name">Name</label>
@@ -41,8 +41,7 @@
           <div class="form-password-toggle">
             <label class="form-label" for="surname">Phone Number</label>
             <div class="input-group input-group-merge">
-              <input type="text" class="form-control" id="surname" name="surname" required /> // daha kayıtlı değil veritabanına 
-            </div>
+              <input type="text" class="form-control" id="surname" name="surname" required />             </div>
           </div>
 
           <div class="form-password-toggle">
@@ -61,14 +60,16 @@
           </div>
 
           <div class="form-group">
-            <label class="form-label" for="role">Role</label>
-            <select class="form-select" id="role" name="role" required>
-              <option value="" selected>Choose...</option>
-              @foreach($roles as $key => $role)
-                <option value="{{ $key }}">{{ $role }}</option>
-              @endforeach
+            <label for="machineSelect">Rol Seçimi</label>
+            <select id="machineSelect" class="form-control" required>
+                <option value="">User Seçin</option>
+                <!-- Dinamik olarak makineleri listeleyin -->
+                <option value="1">Admin</option>
+                <option value="2">Operator</option>
+                <option value="3">Supervision</option>
+                <!-- Diğer makineler buraya dinamik olarak eklenebilir -->
             </select>
-          </div>
+        </div>
 
           <button type="submit" class="btn btn-primary mt-3">Add</button>
         </form>

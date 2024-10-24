@@ -7,30 +7,32 @@
     <div class="card mb-4">
       <h5 class="card-header">Edit User</h5>
       <div class="card-body demo-vertical-spacing demo-only-element">
-        <form action="{{ route('users.update', $user->id) }}" method="POST">
-          @csrf
-          @method('POST')
+        <form>
+          <!-- Name Field -->
           <div class="form-password-toggle">
             <label class="form-label" for="name">Name</label>
             <div class="input-group input-group-merge">
-              <input type="text" class="form-control" id="name" name="name" value="{{ $user->name }}" />
+              <input type="text" class="form-control" id="name" name="name" value="John" />
             </div>
           </div>
 
+          <!-- Surname Field -->
           <div class="form-password-toggle">
             <label class="form-label" for="surname">Surname</label>
             <div class="input-group input-group-merge">
-              <input type="text" class="form-control" id="surname" name="surname" value="{{ $user->surname }}" />
+              <input type="text" class="form-control" id="surname" name="surname" value="Doe" />
             </div>
           </div>
 
+          <!-- Email Field -->
           <div class="form-password-toggle">
             <label class="form-label" for="email">Email</label>
             <div class="input-group input-group-merge">
-              <input type="email" class="form-control" id="email" name="email" value="{{ $user->email }}" />
+              <input type="email" class="form-control" id="email" name="email" value="johndoe@example.com" />
             </div>
           </div>
 
+          <!-- Password Field -->
           <div class="form-password-toggle">
             <label class="form-label" for="password">Password</label>
             <div class="input-group input-group-merge">
@@ -40,6 +42,7 @@
             <small class="form-text text-muted">Leave blank if you don't want to change the password</small>
           </div>
 
+          <!-- Role Selection -->
           <div class="row">
             <div class="col-12">
               <div class="card mb-4">
@@ -48,13 +51,15 @@
                     <label class="form-label" for="role">Role</label>
                     <select class="form-select" id="role" name="role">
                       <option selected>Choose...</option>
-                      <option value="1" {{ $user->role == 1 ? 'selected' : '' }}>Staff1</option>
-                      <option value="2" {{ $user->role == 2 ? 'selected' : '' }}>Staff2</option>
-                      <option value="3" {{ $user->role == 3 ? 'selected' : '' }}>Staff3</option>
+                      <option value="1">Staff1</option>
+                      <option value="2">Staff2</option>
+                      <option value="3">Staff3</option>
                     </select>
                   </div>
+
+                  <!-- Update Button (Just for display) -->
                   <div class="input-group">
-                    <button class="btn btn-outline-primary" type="submit">Update</button>
+                    <button class="btn btn-outline-primary" type="button">Update</button>
                   </div>
                 </div>
               </div>

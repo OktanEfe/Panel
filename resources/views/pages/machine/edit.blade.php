@@ -9,13 +9,20 @@
     <form>
         <!-- Makinenin İsmi -->
         <div class="form-group">
-            <label for="machineName">Makine İsmi</label>
-            <input type="text" id="machineName" class="form-control" value="Makine İsmi" placeholder="Makine adını girin" required>
-        </div>
+          <label for="machineSelect">Makine Seçimi</label>
+          <select id="machineSelect" class="form-control" required>
+              <option value="">Makine Seçin</option>
+              <!-- Dinamik olarak makineleri listeleyin -->
+              <option value="1">Makine 1</option>
+              <option value="2">Makine 2</option>
+              <option value="3">Makine 3</option>
+              <!-- Diğer makineler buraya dinamik olarak eklenebilir -->
+          </select>
+      </div>
 
         <!-- Mevcut Parçalar -->
         <h3>Mevcut Parçalar</h3>
-        <div id="partsContainer">
+        <div id="partsContainer" class=" col-4 , 'my-4'">
             <!-- Varsayılan olarak bir örnek parça -->
             <div class="form-group part-item" id="part-0">
                 <label for="partName_0">Parça İsmi</label>

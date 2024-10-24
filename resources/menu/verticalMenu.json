@@ -93,16 +93,14 @@
       "badge": [],
       "submenu": [
         {
-          "url": "https://demos.themeselection.com/materio-bootstrap-html-laravel-admin-template/demo-1/laravel/user-management",
+          "url": "user/create",
           "name": "Create",
-          "slug": "laravel-example-user-management",
-          "target": "_blank"
+          "slug": "laravel-example-user-management"
         },
         {
-          "url": "https://demos.themeselection.com/materio-bootstrap-html-laravel-admin-template/demo-1/laravel/user-management",
+          "url": "user/{$id}/edit",
           "name": "Edit",
-          "slug": "laravel-example-user-management",
-          "target": "_blank"
+          "slug": "laravel-example-user-management"
         },
         {
           "url": "https://demos.themeselection.com/materio-bootstrap-html-laravel-admin-template/demo-1/laravel/user-management",

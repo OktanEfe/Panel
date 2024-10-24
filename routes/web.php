@@ -45,6 +45,7 @@ use App\Http\Controllers\form_layouts\HorizontalForm;
 use App\Http\Controllers\tables\Basic as TablesBasic;
 use App\Http\Controllers\FaultController;
 use App\Http\Controllers\MachineController;
+use App\Http\Controllers\UserController;
 
 
 
@@ -128,3 +129,11 @@ Route::get('/machine/store', [MachineController::class,'store'])->name('machine.
 Route::get('/machine/', [MachineController::class,'index'])->name('machine.index');
 Route::get('/machine/{id}/edit', [MachineController::class,'edit'])->name('machine.edit');
 Route::get('/machine/{id}/update', [MachineController::class,'update'])->name('machine.update');
+
+
+ //usersUserController::class
+Route::get('/user/create', [UserController::class,'create'])->name('user.create');
+Route::get('/user/store', [UserController::class,'store'])->name('user.store');
+Route::get('/user/', [UserController::class,'index'])->name('user.index');
+Route::get('/user/{id}/edit', [UserController::class,'edit'])->name('user.edit');
+Route::get('/user/{id}/update', [UserController::class,'update'])->name('user.update');
