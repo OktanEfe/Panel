@@ -57,6 +57,11 @@
             </div>
 
             <div class="mb-3">
+                <label for="fault_reason" class="form-label">Arıza Nedeni</label> <!-- seçimli olur bu da bu sayfada bişey daha vardı sanki ama aklıma gelmedi-->
+                <textarea class="form-control" id="fault_reason" name="fault_reason" rows="3" placeholder="Arıza nedenini seçin" required></textarea>
+            </div>
+
+            <div class="mb-3">
                 <label for="fault_description" class="form-label">Arıza Açıklaması</label>
                 <textarea class="form-control" id="fault_description" name="fault_description" rows="3" placeholder="Arızayı açıklayın" required></textarea>
             </div>

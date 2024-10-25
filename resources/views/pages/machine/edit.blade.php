@@ -28,7 +28,7 @@
                 <label for="partName_0">Parça İsmi</label>
                 <input type="text" name="part_names[]" class="form-control" placeholder="Parça ismini girin" required>
 
-                <label for="partExpiry_0">Son Kullanma Tarihi (SKT)</label>
+                <label for="partExpiry_0">Son Kullanma Tarihi (SKT)</label> <!-- bakım süresi gibi bir şey yazılabilir son kullanma tarihi değil de benim de aklıma gelmedi -->
                 <input type="date" name="part_expiries[]" class="form-control" required>
 
                 <!-- Parça Silme Butonu -->

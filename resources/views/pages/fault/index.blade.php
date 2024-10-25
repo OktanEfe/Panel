@@ -23,6 +23,7 @@
                 <th>Tarih ve Saat</th>
                 <th>Ad</th>
                 <th>Soyad</th>
+                <th>Arıza Nedeni</th>
                 <th>Arıza Açıklaması</th>
                 <th>İşlemler</th>
             </tr>
@@ -59,6 +60,7 @@
             <td>${fault.date_time}</td>
             <td>${fault.first_name}</td>
             <td>${fault.last_name}</td>
+            <td>${fault.fault_reason}</td>
             <td>${fault.fault_description}</td>
             <td><a href="edit.html?id=${fault.id}" class="btn btn-warning">Düzenle</a></td>
         `;

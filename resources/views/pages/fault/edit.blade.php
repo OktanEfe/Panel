@@ -49,6 +49,11 @@
         </div>
 
         <div class="mb-3">
+                <label for="fault_reason" class="form-label">Arıza Nedeni</label> <!-- seçimli olur bu da bu sayfada bişey daha vardı sanki ama aklıma gelmedi-->
+                <textarea class="form-control" id="fault_reason" name="fault_reason" rows="3" placeholder="Arıza nedenini seçin" required></textarea>
+            </div>
+
+        <div class="mb-3">
             <label for="fault_description" class="form-label">Arıza Açıklaması</label>
             <textarea class="form-control" id="fault_description" name="fault_description" rows="3" required></textarea>
         </div>
@@ -74,6 +79,7 @@
     document.getElementById('date_time').value = fault.date_time;
     document.getElementById('first_name').value = fault.first_name;
     document.getElementById('last_name').value = fault.last_name;
+    document.getElementById('fault_reason').value = fault.fault_reason;
     document.getElementById('fault_description').value = fault.fault_description;
 
     // Form gönderildiğinde localStorage'da güncelle
@@ -86,6 +92,7 @@
         fault.date_time = document.getElementById('date_time').value;
         fault.first_name = document.getElementById('first_name').value;
         fault.last_name = document.getElementById('last_name').value;
+        fault.fault_reason = document.getElementById('fault_reason').value;
         fault.fault_description = document.getElementById('fault_description').value;
 
         // localStorage'daki diziyi güncelle
