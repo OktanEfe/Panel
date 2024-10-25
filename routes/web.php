@@ -46,6 +46,9 @@ use App\Http\Controllers\tables\Basic as TablesBasic;
 use App\Http\Controllers\FaultController;
 use App\Http\Controllers\MachineController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\HomeController;
+
+use Illuminate\Support\Facades\Auth;
 
 
 
@@ -132,8 +135,16 @@ Route::get('/machine/{id}/update', [MachineController::class,'update'])->name('m
 
 
  //usersUserController::class
-Route::get('/user/create', [UserController::class,'create'])->name('user.create');
-Route::get('/user/store', [UserController::class,'store'])->name('user.store');
+  Route::group(['middleware' => ['auth', 'permission:create-user']], function () {
+    Route::get('/users/create', [UserController::class, 'create'])->middleware('permission:create-user');
+
+  Route::post('users/store', [UserController::class, 'store']);
+});
 Route::get('/user/', [UserController::class,'index'])->name('user.index');
-Route::get('/user/{id}/edit', [UserController::class,'edit'])->name('user.edit');
+Route::get('/users/edit/{id}', [UserController::class, 'edit'])->middleware('permission:edit-user');
 Route::get('/user/{id}/update', [UserController::class,'update'])->name('user.update');
+Route::group(['middleware' => ['auth', 'permission:view-users']], function () {
+  Route::get('users', [UserController::class, 'index']);
+});
+
+Route::get('/home', [HomeController::class, 'index'])->middleware('auth');

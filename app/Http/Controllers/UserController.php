@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
+use App\Models\User;
+
 
 class UserController extends Controller
 {
@@ -11,9 +13,11 @@ class UserController extends Controller
         return view('pages.user.create');
     }
 
-    public function store()
+    public function store(UserRequest $request)
     {
-        return view('pages.user.store');
+      User::create($request->validated());
+      return redirect()->route('users.index')->with('success', 'User added successfully');
+
     }
 
     public function index()
