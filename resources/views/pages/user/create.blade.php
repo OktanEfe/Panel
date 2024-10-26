@@ -65,11 +65,10 @@
             <label for="machineSelect">Rol Seçimi</label>
             <select id="machineSelect" class="form-control" required>
                 <option value="">User Seçin</option>
-                <!-- Dinamik olarak makineleri listeleyin -->
+
                 <option value="1">Admin</option>
                 <option value="2">Operator</option>
                 <option value="3">Supervision</option>
-                <!-- Diğer makineler buraya dinamik olarak eklenebilir -->
             </select>
         </div>
 

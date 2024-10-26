@@ -57,9 +57,13 @@
             </div>
 
             <div class="mb-3">
-                <label for="fault_reason" class="form-label">Arıza Nedeni</label> <!-- seçimli olur bu da bu sayfada bişey daha vardı sanki ama aklıma gelmedi-->
-                <textarea class="form-control" id="fault_reason" name="fault_reason" rows="3" placeholder="Arıza nedenini seçin" required></textarea>
-            </div>
+              <label for="fault_reason" class="form-label">Arıza nedeni</label>
+              <select class="form-select" id="fault_reason" name="fault_reason"  placeholder="Arıza nedenini seçiniz"  required>
+                <option value="" disabled selected>Arıza seçin</option>
+                <option value="Arıza1">Arıza1</option>
+                <option value="Arıza2">Arıza2</option>
+                <option value="Arıza3">Arıza3</option>
+          </div>
 
             <div class="mb-3">
                 <label for="fault_description" class="form-label">Arıza Açıklaması</label>

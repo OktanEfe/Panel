@@ -134,12 +134,16 @@ Route::get('/machine/{id}/edit', [MachineController::class,'edit'])->name('machi
 Route::get('/machine/{id}/update', [MachineController::class,'update'])->name('machine.update');
 
 
- //usersUserController::class
-  Route::group(['middleware' => ['auth', 'permission:create-user']], function () {
-    Route::get('/users/create', [UserController::class, 'create'])->middleware('permission:create-user');
+Route::get('/user/create', [UserController::class,'create'])->name('user.create');
+Route::get('/user/store', [UserController::class,'store'])->name('user.store');
 
-  Route::post('users/store', [UserController::class, 'store']);
-});
+
+ //usersUserController::class
+//   Route::group(['middleware' => ['auth', 'permission:create-user']], function () {
+//     Route::get('/users/create', [UserController::class, 'create'])->middleware('permission:create-user');
+
+//   Route::post('users/store', [UserController::class, 'store']);
+// });
 Route::get('/user/', [UserController::class,'index'])->name('user.index');
 Route::get('/users/edit/{id}', [UserController::class, 'edit'])->middleware('permission:edit-user');
 Route::get('/user/{id}/update', [UserController::class,'update'])->name('user.update');
