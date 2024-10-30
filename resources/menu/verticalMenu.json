@@ -212,22 +212,13 @@
     {
       "menuHeader": "Components"
     },
-    {
-      "name": "Cards",
-      "icon": "menu-icon tf-icons mdi mdi-credit-card-outline",
-      "slug": "cards-basic",
-      "url": "cards/basic"
-    },
+    
     {
       "name": "User interface",
       "icon": "menu-icon tf-icons mdi mdi-archive-outline",
       "slug": "ui",
       "submenu": [
-        {
-          "url": "ui/accordion",
-          "name": "Accordion",
-          "slug": "ui-accordion"
-        },
+        
         {
           "url": "ui/alerts",
           "name": "Alerts",
@@ -243,16 +234,7 @@
           "name": "Buttons",
           "slug": "ui-buttons"
         },
-        {
-          "url": "ui/carousel",
-          "name": "Carousel",
-          "slug": "ui-carousel"
-        },
-        {
-          "url": "ui/collapse",
-          "name": "Collapse",
-          "slug": "ui-collapse"
-        },
+        
         {
           "url": "ui/dropdowns",
           "name": "Dropdowns",

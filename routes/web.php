@@ -75,15 +75,14 @@ Route::get('/auth/register-basic', [RegisterBasic::class, 'index'])->name('auth-
 Route::get('/auth/forgot-password-basic', [ForgotPasswordBasic::class, 'index'])->name('auth-reset-password-basic');
 
 // cards
-Route::get('/cards/basic', [CardBasic::class, 'index'])->name('cards-basic');
+
 
 // User Interface
-Route::get('/ui/accordion', [Accordion::class, 'index'])->name('ui-accordion');
+
 Route::get('/ui/alerts', [Alerts::class, 'index'])->name('ui-alerts');
 Route::get('/ui/badges', [Badges::class, 'index'])->name('ui-badges');
 Route::get('/ui/buttons', [Buttons::class, 'index'])->name('ui-buttons');
-Route::get('/ui/carousel', [Carousel::class, 'index'])->name('ui-carousel');
-Route::get('/ui/collapse', [Collapse::class, 'index'])->name('ui-collapse');
+
 Route::get('/ui/dropdowns', [Dropdowns::class, 'index'])->name('ui-dropdowns');
 Route::get('/ui/footer', [Footer::class, 'index'])->name('ui-footer');
 Route::get('/ui/list-groups', [ListGroups::class, 'index'])->name('ui-list-groups');
