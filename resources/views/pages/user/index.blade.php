@@ -37,12 +37,10 @@
         <table class="table">
           <thead class="table-light">
             <tr>
-              <th class="text-truncate">User</th>
+              <th class="text-truncate">ID</th>
               <th class="text-truncate">Email</th>
               <th class="text-truncate">Role</th>
-              <th class="text-truncate">Age</th>
-              <th class="text-truncate">Salary</th>
-              <th class="text-truncate">Status</th>
+              <th class="text-truncate">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -60,9 +58,10 @@
               </td>
               <td class="text-truncate">susanna.Lind57@gmail.com</td>
               <td class="text-truncate"><i class="mdi mdi-laptop mdi-24px text-danger me-1"></i> Admin</td>
-              <td class="text-truncate">24</td>
-              <td class="text-truncate">34500$</td>
-              <td><span class="badge bg-label-warning rounded-pill">Pending</span></td>
+              <td class="text-truncate">
+                <button class="text-blue-500">✏️</button>
+                <button class="text-red-500">🗑️</button>
+              </td>
             </tr>
             <tr>
               <td>
