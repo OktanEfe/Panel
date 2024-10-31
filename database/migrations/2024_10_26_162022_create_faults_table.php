@@ -14,7 +14,8 @@ return new class extends Migration
     Schema::create('faults', function (Blueprint $table) {
       $table->id();
       $table->unsignedBigInteger('machine_id');
-      $table->date('created');
+      $table->datetime('start_time');
+      $table->datetime('stop_time');
       $table->unsignedBigInteger('user_id');
       $table->unsignedBigInteger('part_id');
       $table->string('cause_of_malfunction');

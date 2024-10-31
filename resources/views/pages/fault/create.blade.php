@@ -42,18 +42,22 @@
             </div>
 
             <div class="mb-3">
-                <label for="date_time" class="form-label">Tarih ve Saat</label>
+                <label for="date_time" class="form-label">Arıza Kayıt Tarihi(Makine durma tarihi)</label>
                 <input type="datetime-local" class="form-control" id="date_time" name="date_time" required>
             </div>
+            <div class="mb-3">
+              <label for="date_time" class="form-label">Makine başlangıç saati</label>
+              <input type="datetime-local" class="form-control" id="date_time" name="date_time" required>
+          </div>
 
             <div class="mb-3">
                 <label for="name" class="form-label">Ad</label>
-                <input type="text" class="form-control" id="name" name="first_name" placeholder="Adınızı girin" required>
+                <input type="text" class="form-control" id="name" name="first_name" placeholder="Adınızı girin" required disabled>
             </div>
 
             <div class="mb-3">
                 <label for="surname" class="form-label">Soyad</label>
-                <input type="text" class="form-control" id="surname" name="last_name" placeholder="Soyadınızı girin" required>
+                <input type="text" class="form-control" id="surname" name="last_name" placeholder="Soyadınızı girin" required disabled>
             </div>
 
             <div class="mb-3">

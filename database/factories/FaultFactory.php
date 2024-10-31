@@ -24,7 +24,8 @@ class FaultFactory extends Factory
       'machine_id' => Machine::factory(),
       'part_id' => Part::factory(),
       'user_id' => User::factory(),
-      'created' => $this->faker->date,
+      'start_time' => $this->faker->datetime,
+      'stop_time' => $this->faker->datetime,
       'cause_of_malfunction' => $this->faker->name
 
     ];

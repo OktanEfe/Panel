@@ -70,10 +70,9 @@
           "slug": "laravel-example-user-management"
         },
         {
-          "url": "https://demos.themeselection.com/materio-bootstrap-html-laravel-admin-template/demo-1/laravel/user-management",
+          "url": "user/",
           "name": "index",
-          "slug": "laravel-example-user-management",
-          "target": "_blank"
+          "slug": "laravel-example-user-management"
         }
       ]
     },
@@ -99,7 +98,6 @@
     {
       "menuHeader": "Apps & Pages"
     },
-    
     {
       "name": "Account Settings",
       "icon": "menu-icon tf-icons mdi mdi-account-outline",
@@ -147,17 +145,14 @@
         }
       ]
     },
-    
     {
       "menuHeader": "Components"
     },
-    
     {
       "name": "User interface",
       "icon": "menu-icon tf-icons mdi mdi-archive-outline",
       "slug": "ui",
       "submenu": [
-        
         {
           "url": "ui/alerts",
           "name": "Alerts",
@@ -173,7 +168,6 @@
           "name": "Buttons",
           "slug": "ui-buttons"
         },
-        
         {
           "url": "ui/dropdowns",
           "name": "Dropdowns",
@@ -301,16 +295,11 @@
         }
       ]
     },
-    
     {
       "url": "tables/basic",
       "icon": "menu-icon tf-icons mdi mdi-table",
       "name": "Tables",
       "slug": "tables-basic"
     }
-    
-    
-    
-    
   ]
 }
