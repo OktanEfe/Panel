@@ -74,11 +74,8 @@ Route::get('/auth/login-basic', [LoginBasic::class, 'index'])->name('auth-login-
 Route::get('/auth/register-basic', [RegisterBasic::class, 'index'])->name('auth-register-basic');
 Route::get('/auth/forgot-password-basic', [ForgotPasswordBasic::class, 'index'])->name('auth-reset-password-basic');
 
-// cards
-
 
 // User Interface
-
 Route::get('/ui/alerts', [Alerts::class, 'index'])->name('ui-alerts');
 Route::get('/ui/badges', [Badges::class, 'index'])->name('ui-badges');
 Route::get('/ui/buttons', [Buttons::class, 'index'])->name('ui-buttons');
