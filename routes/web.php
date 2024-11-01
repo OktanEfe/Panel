@@ -116,7 +116,7 @@ Route::get('/form/layouts-horizontal', [HorizontalForm::class, 'index'])->name('
 Route::get('/tables/basic', [TablesBasic::class, 'index'])->name('tables-basic');
 
 
- //fault
+//fault
 Route::get('/fault/create', [FaultController::class, 'create'])->name('fault.create');
 Route::post('/fault/store', [FaultController::class, 'store'])->name('fault.store');
 Route::get('/fault', [FaultController::class, 'index'])->name('fault.index');
@@ -126,26 +126,31 @@ Route::post('/fault/{id}/update', [FaultController::class, 'update'])->name('fau
 
 //machines
 
-Route::get('/machine/create', [MachineController::class,'create'])->name('machine.create');
-Route::get('/machine/store', [MachineController::class,'store'])->name('machine.store');
-Route::get('/machine/', [MachineController::class,'index'])->name('machine.index');
-Route::get('/machine/{id}/edit', [MachineController::class,'edit'])->name('machine.edit');
-Route::get('/machine/{id}/update', [MachineController::class,'update'])->name('machine.update');
+Route::get('/machine/create', [MachineController::class, 'create'])->name('machine.create');
+Route::get('/machine/store', [MachineController::class, 'store'])->name('machine.store');
+Route::get('/machine/', [MachineController::class, 'index'])->name('machine.index');
+Route::get('/machine/{id}/edit', [MachineController::class, 'edit'])->name('machine.edit');
+Route::get('/machine/{id}/update', [MachineController::class, 'update'])->name('machine.update');
 
 
-Route::get('/user/create', [UserController::class,'create'])->name('user.create');
-Route::get('/user/store', [UserController::class,'store'])->name('user.store');
+Route::get('/user/create', [UserController::class, 'create'])->name('user.create');
+Route::get('/user/store', [UserController::class, 'store'])->name('user.store');
 
 
- //usersUserController::class
+//usersUserController::class
 //   Route::group(['middleware' => ['auth', 'permission:create-user']], function () {
 //     Route::get('/users/create', [UserController::class, 'create'])->middleware('permission:create-user');
 
 //   Route::post('users/store', [UserController::class, 'store']);
 // });
-Route::get('/user/', [UserController::class,'index'])->name('user.index');
-Route::get('/users/edit/{id}', [UserController::class, 'edit'])->middleware('permission:edit-user');
-Route::get('/user/{id}/update', [UserController::class,'update'])->name('user.update');
+Route::get('/user', [UserController::class, 'index'])->name('user.index');
+Route::get('/user/create', [UserController::class, 'create'])->name('user.create');
+Route::post('/user', [UserController::class, 'store'])->name('user.store');
+Route::get('/user/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
+Route::put('/user/{id}', [UserController::class, 'update'])->name('user.update');
+Route::delete('/user/{id}', [UserController::class, 'destroy'])->name('user.destroy');
+
+
 Route::group(['middleware' => ['auth', 'permission:view-users']], function () {
   Route::get('users', [UserController::class, 'index']);
 });

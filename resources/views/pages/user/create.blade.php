@@ -43,7 +43,7 @@
           <div class="form-password-toggle">
             <label class="form-label" for="surname">Phone Number</label>
             <div class="input-group input-group-merge">
-              <input type="text" class="form-control" id="surname" name="surname" required />
+              <input type="text" class="form-control" id="phone_number" name="phone_number" required />
           </div>
 
           <div class="form-password-toggle">
@@ -63,7 +63,7 @@
 
           <div class="form-group">
             <label for="machineSelect">Rol Seçimi</label>
-            <select id="machineSelect" class="form-control" required>
+            <select id="role_id" class="form-control" required>
                 <option value="">User Seçin</option>
 
                 <option value="1">Admin</option>

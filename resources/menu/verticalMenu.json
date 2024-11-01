@@ -65,13 +65,8 @@
           "slug": "laravel-example-user-management"
         },
         {
-          "url": "user/{$id}/edit",
-          "name": "Edit",
-          "slug": "laravel-example-user-management"
-        },
-        {
           "url": "user/",
-          "name": "index",
+          "name": "Index",
           "slug": "laravel-example-user-management"
         }
       ]
