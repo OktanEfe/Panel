@@ -113,13 +113,7 @@ Route::get('/form/layouts-horizontal', [HorizontalForm::class, 'index'])->name('
 Route::get('/tables/basic', [TablesBasic::class, 'index'])->name('tables-basic');
 
 
-//fault
-Route::get('/fault/create', [FaultController::class, 'create'])->name('fault.create');
-Route::post('/fault/store', [FaultController::class, 'store'])->name('fault.store');
-Route::get('/fault', [FaultController::class, 'index'])->name('fault.index');
-Route::get('/fault/{id}/edit', [FaultController::class, 'edit'])->name('fault.edit');
-Route::post('/fault/{id}/update', [FaultController::class, 'update'])->name('fault.update');
-
+Route::resource('fault', FaultController::class);
 
 //machines
 

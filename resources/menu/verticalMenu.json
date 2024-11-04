@@ -15,11 +15,6 @@
           "slug": "front-pages-landing"
         },
         {
-          "url": "fault/{$id}/edit",
-          "name": "Edit",
-          "slug": "front-pages-pricing"
-        },
-        {
           "url": "fault/",
           "name": "İndex",
           "slug": "front-pages-payment"
@@ -38,16 +33,9 @@
           "slug": "laravel-example-user-management"
         },
         {
-          "url": "machine/{$id}/edit",
-          "name": "Edit",
-          "slug": "laravel-example-user-management",
-          "target": "_blank"
-        },
-        {
-          "url": "https://demos.themeselection.com/materio-bootstrap-html-laravel-admin-template/demo-1/laravel/user-management",
+          "url": "machine/",
           "name": "İndex",
-          "slug": "laravel-example-user-management",
-          "target": "_blank"
+          "slug": "laravel-example-user-management"
         }
       ]
     },

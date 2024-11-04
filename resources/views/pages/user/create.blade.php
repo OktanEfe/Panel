@@ -32,8 +32,6 @@
             </div>
           </div>
 
-
-
           <div class="form-password-toggle">
             <label class="form-label" for="surname">Surname</label>
             <div class="input-group input-group-merge">

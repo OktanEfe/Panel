@@ -19,8 +19,6 @@
               <!-- Diğer makineler buraya dinamik olarak eklenebilir -->
           </select>
       </div>
-
-        <!-- Mevcut Parçalar -->
         <h3>Mevcut Parçalar</h3>
         <div id="partsContainer" class=" col-4 , 'my-4'">
             <!-- Varsayılan olarak bir örnek parça -->
@@ -28,8 +26,7 @@
                 <label for="partName_0">Parça İsmi</label>
                 <input type="text" name="part_names[]" class="form-control" placeholder="Parça ismini girin" required>
 
-                <label for="partExpiry_0">Son Kullanma Tarihi (SKT)</label> <!-- bakım süresi gibi bir şey yazılabilir son kullanma tarihi değil de benim de aklıma gelmedi -->
-                <input type="date" name="part_expiries[]" class="form-control" required>
+
 
                 <!-- Parça Silme Butonu -->
                 <button type="button" class="btn btn-danger removePartBtn" data-index="0">Parçayı Sil</button>

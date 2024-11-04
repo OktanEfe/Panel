@@ -47,11 +47,22 @@
                 <label for="email" class="form-label">Email</label>
                 <input type="email" name="email" id="email" class="form-control" value="{{ old('email', $users->email) }}">
               </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Phone Number</label>
+                <input type="text" name="phone_number" id="phone_number" class="form-control" value="{{ old('phone_number', $users->phone_number) }}">
+              </div>
 
               <!-- Password Field -->
-              <div class="mb-3">
+              {{-- <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
                 <input type="password" name="password" id="password" class="form-control" placeholder="Leave blank to keep current password">
+              </div> --}}
+              <div class="form-password-toggle">
+                <label class="form-label" for="password">Password</label>
+                <div class="input-group input-group-merge">
+                  <input type="password" class="form-control" id="password" name="password" required placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" />
+                  <span class="input-group-text cursor-pointer"><i class="mdi mdi-eye-off-outline"></i></span>
+                </div>
               </div>
 
               <!-- Role Field -->

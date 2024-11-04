@@ -1,108 +1,72 @@
 @extends('layouts/contentNavbarLayout')
 
-@section('title', 'Makine Arıza Kaydı Oluştur')
+@section('title', 'Arıza Kaydını Düzenle')
+
 @section('content')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arıza Kaydı Düzenle</title>
-</head>
-<body>
+@if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
 
 <div class="container mt-4">
-    <h2>Arıza Kaydı Düzenle</h2>
+    <h2>Arıza Kaydını Düzenle</h2>
 
-    <!-- Düzenleme Formu -->
-    <form id="editForm">
+    <form action="{{ route('fault.update', $fault->id) }}" method="POST">
+        @csrf
+        @method('PUT')
+
+        <!-- Makine Adı -->
         <div class="mb-3">
-            <label for="machine" class="form-label">Makine Seçin</label>
-            <select class="form-select" id="machine" name="machine" required>
-                <option value="Makine 1">Makine 1</option>
-                <option value="Makine 2">Makine 2</option>
-                <option value="Makine 3">Makine 3</option>
-            </select>
+            <label for="machine_name" class="form-label">Makine Adı</label>
+            <input type="text" class="form-control" id="machine_name" name="machine_name" value="{{ $fault->machine->machine_name }}" >
         </div>
 
+        <!-- Parça Adı -->
         <div class="mb-3">
-            <label for="part" class="form-label">Parça Seçin</label>
-            <select class="form-select" id="part" name="part" required>
-                <option value="Parça 1">Parça 1</option>
-                <option value="Parça 2">Parça 2</option>
-                <option value="Parça 3">Parça 3</option>
-            </select>
+            <label for="part_name" class="form-label">Parça Adı</label>
+            <input type="text" class="form-control" id="part_name" name="part_name" value="{{ $fault->part->name }}" >
         </div>
 
+        <!-- Durma Tarihi -->
         <div class="mb-3">
-            <label for="date_time" class="form-label">Tarih ve Saat</label>
-            <input type="datetime-local" class="form-control" id="date_time" name="date_time" required>
+            <label for="date_time" class="form-label">Durma Tarihi</label>
+            <input type="datetime-local" class="form-control" id="date_time" name="stop_time" value="{{ $fault->stop_time }}" required>
         </div>
 
+        <!-- Başlangıç Saati -->
         <div class="mb-3">
-            <label for="first_name" class="form-label">Ad</label>
-            <input type="text" class="form-control" id="first_name" name="first_name" required>
+            <label for="start_time" class="form-label">Başlangıç Saati</label>
+            <input type="datetime-local" class="form-control" id="start_time" name="start_time" value="{{ $fault->start_time }}" required>
         </div>
 
+        <!-- Kullanıcı Adı -->
         <div class="mb-3">
-            <label for="last_name" class="form-label">Soyad</label>
-            <input type="text" class="form-control" id="last_name" name="last_name" required>
+            <label for="user_name" class="form-label">Ad</label>
+            <input type="text" class="form-control" id="user_name" name="user_name" value="{{ $fault->user->name }}" readonly>
         </div>
 
+        <!-- Kullanıcı Soyadı -->
         <div class="mb-3">
-                <label for="fault_reason" class="form-label">Arıza Nedeni</label> <!-- seçimli olur bu da bu sayfada bişey daha vardı sanki ama aklıma gelmedi-->
-                <textarea class="form-control" id="fault_reason" name="fault_reason" rows="3" placeholder="Arıza nedenini seçin" required></textarea>
-            </div>
+            <label for="user_surname" class="form-label">Soyad</label>
+            <input type="text" class="form-control" id="user_surname" name="user_surname" value="{{ $fault->user->surname }}" readonly>
+        </div>
 
+        <!-- Arıza Nedeni -->
+        <div class="mb-3">
+            <label for="cause_of_malfunction" class="form-label">Arıza Nedeni</label>
+            <input type="text" class="form-control" id="cause_of_malfunction" name="cause_of_malfunction" value="{{ $fault->cause_of_malfunction }}" >
+        </div>
+
+        <!-- Arıza Açıklaması -->
         <div class="mb-3">
             <label for="fault_description" class="form-label">Arıza Açıklaması</label>
-            <textarea class="form-control" id="fault_description" name="fault_description" rows="3" required></textarea>
+            <textarea class="form-control" id="fault_description" name="description" rows="3" required>{{ $fault->Description }}</textarea>
         </div>
 
-        <button type="submit" class="btn btn-primary">Kaydı Güncelle</button>
+        <button type="submit" class="btn btn-primary">Kaydet</button>
     </form>
 </div>
 
-<script>
-    // URL parametrelerinden ID'yi al
-    const params = new URLSearchParams(window.location.search);
-    const faultId = parseInt(params.get('id'));
-
-    // localStorage'dan verileri al
-    const storedFaults = JSON.parse(localStorage.getItem('faults'));
-
-    // Düzenlenecek kaydı bul
-    const fault = storedFaults.find(f => f.id === faultId);
-
-    // Formu ilgili kayıtla doldur
-    document.getElementById('machine').value = fault.machine;
-    document.getElementById('part').value = fault.part;
-    document.getElementById('date_time').value = fault.date_time;
-    document.getElementById('first_name').value = fault.first_name;
-    document.getElementById('last_name').value = fault.last_name;
-    document.getElementById('fault_reason').value = fault.fault_reason;
-    document.getElementById('fault_description').value = fault.fault_description;
-
-    // Form gönderildiğinde localStorage'da güncelle
-    document.getElementById('editForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        // Formdan yeni verileri al
-        fault.machine = document.getElementById('machine').value;
-        fault.part = document.getElementById('part').value;
-        fault.date_time = document.getElementById('date_time').value;
-        fault.first_name = document.getElementById('first_name').value;
-        fault.last_name = document.getElementById('last_name').value;
-        fault.fault_reason = document.getElementById('fault_reason').value;
-        fault.fault_description = document.getElementById('fault_description').value;
-
-        // localStorage'daki diziyi güncelle
-        const updatedFaults = storedFaults.map(f => f.id === faultId ? fault : f);
-        localStorage.setItem('faults', JSON.stringify(updatedFaults));
-
-        // Düzenleme tamamlandığında ana sayfaya yönlendir
-        window.location.href = 'index.html';
-    });
-</script>
-
-</body>
 @endsection
