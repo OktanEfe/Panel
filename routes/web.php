@@ -123,6 +123,8 @@ Route::get('/machine/', [MachineController::class, 'index'])->name('machine.inde
 Route::get('/machine/{id}/edit', [MachineController::class, 'edit'])->name('machine.edit');
 Route::get('/machine/{id}/update', [MachineController::class, 'update'])->name('machine.update');
 
+Route::get('/get-parts/{machineId}', [FaultController::class, 'getParts'])->name('get.parts');
+
 
 Route::get('/user/create', [UserController::class, 'create'])->name('user.create');
 Route::get('/user/store', [UserController::class, 'store'])->name('user.store');

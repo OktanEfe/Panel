@@ -19,6 +19,7 @@
 
 
 
+  @livewireStyles
 
   <!-- Include Styles -->
   @include('layouts/sections/styles')
@@ -38,6 +39,7 @@
 
   <!-- Include Scripts -->
   @include('layouts/sections/scripts')
+  @livewireScripts
 
 </body>
 

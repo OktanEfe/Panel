@@ -13,13 +13,13 @@ return new class extends Migration
   {
     Schema::create('faults', function (Blueprint $table) {
       $table->id();
-      $table->unsignedBigInteger('machine_id');
+      $table->foreignId('machine_id')->constrained('machines')->onDelete('cascade');
       $table->datetime('start_time');
       $table->datetime('stop_time');
-      $table->unsignedBigInteger('user_id');
-      $table->unsignedBigInteger('part_id');
+      $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+      $table->foreignId('part_id')->constrained('parts')->onDelete('cascade');
       $table->string('cause_of_malfunction');
-      $table->string('Description');
+      $table->string('description');
       $table->timestamps();
     });
   }

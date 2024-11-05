@@ -13,7 +13,7 @@ return new class extends Migration
   {
     Schema::create('parts', function (Blueprint $table) {
       $table->id();
-      $table->unsignedBigInteger('machine_id');
+      $table->foreignId('machine_id')->constrained('machines')->onDelete('cascade');
       $table->string('name');
       $table->date('expiry_date');
       $table->timestamps();

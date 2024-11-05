@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Machine;
+use App\Models\Part;
 
 class MachineController extends Controller
 {
@@ -34,5 +35,10 @@ class MachineController extends Controller
   public function update($id)
   {
     return view('pages.machine.update', ['id' => $id]);
+  }
+  public function getParts($machineId)
+  {
+    $parts = Part::where('machine_id', $machineId)->get();
+    return response()->json($parts);
   }
 }

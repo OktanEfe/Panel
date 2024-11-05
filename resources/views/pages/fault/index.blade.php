@@ -37,7 +37,7 @@
                 <td>{{ $fault->user->name }}</td>
                 <td>{{ $fault->user->surname }}</td>
                 <td>{{ $fault->cause_of_malfunction }}</td>
-                <td>{{ $fault->Description }}</td>
+                <td>{{ $fault->description }}</td>
                 <td>
                     <!-- Edit Button -->
                     <a href="{{ route('fault.edit', $fault->id) }}" class="btn btn-warning btn-sm">Edit</a>
