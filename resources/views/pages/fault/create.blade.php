@@ -68,6 +68,7 @@
            var machineId = $(this).val();
            console.log('Makine ID:', machineId);
 
+
            if (machineId) {
                $.ajax({
                    url: '/get-parts/' + machineId,

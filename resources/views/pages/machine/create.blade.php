@@ -17,14 +17,12 @@
 
         <!-- Parça Sayısı Girdisi -->
         <div class="form-group">
-            <label for="partCount">Parça Sayısı</label>
-            <input type="number" id="partCount" class="form-control" placeholder="Kaç parça gireceksiniz?" min="1" required>
+            <label for="parts_count">Parça Sayısı</label>
+            <input type="number" name="parts_count" id="parts_count" class="form-control" placeholder="Kaç parça gireceksiniz?" min="1" required>
         </div>
 
         <!-- Parça Alanları (Dinamik) -->
         <div id="partsContainer" class="row"></div>
-
-
 
         <!-- Form Gönderme Butonu -->
         <div class="form-group mt-4">
@@ -35,7 +33,7 @@
 
 <!-- Javascript ile Dinamik Parça Alanları Oluşturma -->
 <script>
-    document.getElementById('partCount').addEventListener('change', function () {
+    document.getElementById('parts_count').addEventListener('change', function () {
         var partCount = parseInt(this.value);
         var partsContainer = document.getElementById('partsContainer');
 
@@ -48,10 +46,10 @@
             newPart.classList.add('form-group', 'part-item', 'col-4', 'my-4');
             newPart.innerHTML = `
                 <label for="partName_${i}">Parça İsmi</label>
-                <input type="text" name="part_names[]" class="form-control" placeholder="Parça ismini girin" required>
+                <input type="text" name="name[]" class="form-control" placeholder="Parça ismini girin" required>
 
                 <label for="partExpiry_${i}">Son Kullanma Tarihi (SKT)</label>
-                <input type="date" name="part_expiries[]" class="form-control" required>
+                <input type="date" name="expiry_date[]" class="form-control" required>
             `;
             partsContainer.appendChild(newPart);
         }

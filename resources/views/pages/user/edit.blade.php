@@ -52,11 +52,7 @@
                 <input type="text" name="phone_number" id="phone_number" class="form-control" value="{{ old('phone_number', $users->phone_number) }}">
               </div>
 
-              <!-- Password Field -->
-              {{-- <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" name="password" id="password" class="form-control" placeholder="Leave blank to keep current password">
-              </div> --}}
+
               <div class="form-password-toggle">
                 <label class="form-label" for="password">Password</label>
                 <div class="input-group input-group-merge">

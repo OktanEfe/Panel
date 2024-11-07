@@ -23,12 +23,14 @@ class UserRequest extends FormRequest
    */
   public function rules()
   {
+    $userId = $this->route('id'); // Ya da `$this->route('user')` olarak güncelleyebilirsiniz.
+
     return [
       'name' => 'required|string|max:255',
       'phone_number' => 'required|numeric|digits:11',
       'surname' => 'required|string|max:255',
-      'email' => 'required|email|unique:users,email',
-      'password' => 'required|min:8',
+      'email' => 'required|email|unique:users,email,' .  $userId,
+         'password' => 'required|min:8',
     ];
   }
 }

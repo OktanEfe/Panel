@@ -15,8 +15,8 @@ return new class extends Migration
       $table->id();
       $table->string('name');
       $table->string('surname');
+      $table->foreignId('role_id')->default(1)->constrained('roles')->onDelete('cascade');
       $table->string('phone_number');
-      $table->unsignedBigInteger('role_id');
       $table->string('email')->unique();
       $table->timestamp('email_verified_at')->nullable();
       $table->string('password');
