@@ -98,8 +98,10 @@ const sassOptions = {
 // Core stylesheets
 mixAssetsDir('vendor/scss/**/!(_)*.scss', (src, dest) =>
   mix.sass(src, dest.replace(/(\\|\/)scss(\\|\/)/, '$1css$2').replace(/\.scss$/, '.css'), { sassOptions })
-);
 
+);
+//core.css
+mix.css('./public/assets/vendor/css/core.css', 'public/assets/vendor/css').version();
 // Core javascripts
 mixAssetsDir('vendor/js/**/*.js', (src, dest) => mix.js(src, dest));
 

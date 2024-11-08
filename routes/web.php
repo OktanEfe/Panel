@@ -119,7 +119,7 @@ Route::resource('fault', FaultController::class);
 
 Route::get('/machine/create', [MachineController::class, 'create'])->name('machine.create');
 Route::get('/machine/store', [MachineController::class, 'store'])->name('machine.store');
-Route::get('/machine/', [MachineController::class, 'index'])->name('machine.index');
+Route::get('/machine', [MachineController::class, 'index'])->name('machine.index');
 Route::get('/machine/{id}/edit', [MachineController::class, 'edit'])->name('machine.edit');
 Route::get('/machine/{id}/update', [MachineController::class, 'update'])->name('machine.update');
 
