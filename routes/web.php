@@ -119,7 +119,7 @@ Route::resource('fault', FaultController::class);
 //machines
 
 Route::get('/machine/create', [MachineController::class, 'create'])->name('machine.create');
-Route::resource('machine', MachineController::class)->only(['index', 'edit', 'update', 'destroy']);
+Route::resource('machine', MachineController::class)->only(['index', 'edit', 'update', 'destroy', 'store']);
 
 
 Route::get('/get-parts/{machineId}', [FaultController::class, 'getParts'])->name('get.parts');
