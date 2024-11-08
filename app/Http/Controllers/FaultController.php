@@ -20,28 +20,33 @@ class FaultController extends Controller
   }
   public function store(Request $request)
   {
-
     $request->validate([
       'machine_id' => 'required|exists:machines,id',
       'part_id' => 'required|exists:parts,id',
       'stop_time' => 'required|date',
-      'user_id' => 'required|exists:user,id',
+      'user_id' => 'required|exists:users,id', // `user` yerine `users` olarak düzeltilmeli
       'start_time' => 'required|date',
       'cause_of_malfunction' => 'required|string|max:255',
       'description' => 'required|string|max:1000',
     ]);
-    Fault::create([
-      'machine_id' => $request->machine_id,
-      'part_id' => $request->part_id,
-      'stop_time' => $request->stop_time,
-      'start_time' => $request->start_time, // Başlangıç zamanını otomatik olarak alabiliriz veya formdan gelebilir
-      'user_id' => $request->user_id,
-      'cause_of_malfunction' => $request->cause_of_malfunction,
-      'description' => $request->description,
-    ]);
 
-    return redirect()->route('pages.fault.index')->with('success', 'Arıza kaydı başarıyla oluşturuldu.');
+    try {
+      Fault::create([
+        'machine_id' => $request->machine_id,
+        'part_id' => $request->part_id,
+        'stop_time' => $request->stop_time,
+        'start_time' => $request->start_time,
+        'user_id' => $request->user_id,
+        'cause_of_malfunction' => $request->cause_of_malfunction,
+        'description' => $request->description,
+      ]);
+
+      return redirect()->route('fault.index')->with('success', 'Arıza kaydı başarıyla oluşturuldu.');
+    } catch (\Exception $e) {
+      return back()->withErrors(['error' => 'Bir hata oluştu: ' . $e->getMessage()]);
+    }
   }
+
 
   public function index()
   {

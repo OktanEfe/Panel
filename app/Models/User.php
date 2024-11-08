@@ -11,15 +11,17 @@ class User extends Authenticatable
 {
   use HasApiTokens, HasFactory, Notifiable;
 
-  public function roles()
+
+
+  public function assingRole($roleName)
   {
-    return $this->belongsToMany(Role::class, 'role_user');
-  }
-  public function assingRole($roleName){
-    $role =Role::where('name', $roleName)->first();
+    $role = Role::where('name', $roleName)->first();
     $this->roles()->attach($role);
   }
-
+  public function role()
+  {
+    return $this->belongsTo(Role::class);
+  }
   public function hasRole($role)
   {
     return $this->roles()->where('name', $role)->exists();

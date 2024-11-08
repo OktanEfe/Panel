@@ -9,13 +9,11 @@ use App\Models\Role;
 
 class RoleSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
-    public function run(): void
-    {
-      Role::create(['name' => 'Admin', 'description' => 'Full access to everything']);
-      Role::create(['name' => 'Editor', 'description' => 'Can edit content']);
-      Role::create(['name' => 'Viewer', 'description' => 'Can view content']);
-    }
+  /**
+   * Run the database seeds.
+   */
+  public function run(): void
+  {
+    Role::firstOrCreate(['name' => 'admin']);
+  }
 }

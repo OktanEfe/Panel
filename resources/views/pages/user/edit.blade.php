@@ -8,7 +8,7 @@
       <div class="col-md-8 offset-md-2">
         <div class="card">
           <div class="card-header">
-            <h5>Edit User - {{ $users->name }}</h5>
+            <h5>Edit User - {{ $user->name }}</h5>
           </div>
           <div class="card-body">
             <!-- Display success or error messages -->
@@ -26,30 +26,30 @@
             @endif
 
             <!-- Edit Form -->
-            <form action="{{ route('user.update', $users->id) }}" method="POST">
+            <form action="{{ route('user.update', $user->id) }}" method="POST">
               @csrf
               @method('PUT')
 
               <!-- Name Field -->
               <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
-                <input type="text" name="name" id="name" class="form-control" value="{{ old('name', $users->name) }}">
+                <input type="text" name="name" id="name" class="form-control" value="{{ old('name', $user->name) }}">
               </div>
 
               <!-- Surname Field -->
               <div class="mb-3">
                 <label for="surname" class="form-label">Surname</label>
-                <input type="text" name="surname" id="surname" class="form-control" value="{{ old('surname', $users->surname) }}">
+                <input type="text" name="surname" id="surname" class="form-control" value="{{ old('surname', $user->surname) }}">
               </div>
 
               <!-- Email Field -->
               <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" name="email" id="email" class="form-control" value="{{ old('email', $users->email) }}">
+                <input type="email" name="email" id="email" class="form-control" value="{{ old('email', $user->email) }}">
               </div>
               <div class="mb-3">
                 <label for="email" class="form-label">Phone Number</label>
-                <input type="text" name="phone_number" id="phone_number" class="form-control" value="{{ old('phone_number', $users->phone_number) }}">
+                <input type="text" name="phone_number" id="phone_number" class="form-control" value="{{ old('phone_number', $user->phone_number) }}">
               </div>
 
 
