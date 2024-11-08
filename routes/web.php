@@ -47,6 +47,7 @@ use App\Http\Controllers\FaultController;
 use App\Http\Controllers\MachineController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PartController;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -118,10 +119,12 @@ Route::resource('fault', FaultController::class);
 //machines
 
 Route::get('/machine/create', [MachineController::class, 'create'])->name('machine.create');
-Route::get('/machine/store', [MachineController::class, 'store'])->name('machine.store');
-Route::get('/machine', [MachineController::class, 'index'])->name('machine.index');
-Route::get('/machine/{id}/edit', [MachineController::class, 'edit'])->name('machine.edit');
-Route::get('/machine/{id}/update', [MachineController::class, 'update'])->name('machine.update');
+
+
+
+Route::resource('machine', MachineController::class)->only(['index', 'edit', 'update', 'destroy', 'store']);
+
+
 
 Route::get('/get-parts/{machineId}', [FaultController::class, 'getParts'])->name('get.parts');
 
@@ -149,3 +152,7 @@ Route::group(['middleware' => ['auth', 'permission:view-users']], function () {
 });
 
 Route::get('/home', [HomeController::class, 'index'])->middleware('auth');
+
+
+//PART
+Route::resource('part', PartController::class)->only(['edit', 'update', 'destroy', 'store']);

@@ -17,7 +17,7 @@ class UserController extends Controller
   public function store(UserRequest $request)
   {
     User::create($request->validated());
-    return redirect()->route('pages.users.index')->with('success', 'User added successfully');
+    return redirect()->route('user.index')->with('success', 'User added successfully');
   }
 
   public function index()
@@ -32,13 +32,13 @@ class UserController extends Controller
     return view('pages.user.edit', compact('users'));
   }
 
-  public function update(UserRequest $request, $id)
-  {
-    $users = User::findOrFail($id);
-    $users->update($request->validated());
+    public function update(UserRequest $request, $id)
+    {
+      $users = User::findOrFail($id);
+      $users->update($request->validated());
 
-    return redirect()->route('pages.user.index')->with('success', 'User updated successfully');
-  }
+      return redirect()->route('user.index')->with('success', 'User updated successfully');
+    }
   public function destroy($id)
   {
     $users = User::findOrFail($id);
