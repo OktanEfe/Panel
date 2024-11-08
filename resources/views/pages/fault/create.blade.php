@@ -45,6 +45,15 @@
           <label for="date_time" class="form-label"> Arıza Bitiş Tarihi (Makine Başlama tarihi)</label>
           <input type="datetime-local" class="form-control" id="start_time" name="start_time" required>
         </div>
+        <div class="mb-3">
+          <label for="user" class="form-label">Kullanıcı Seçin</label>
+          <select class="form-select" id="user" name="user_id" required>
+              <option value="" disabled selected>Kullanıcı seçin</option>
+              @foreach($users as $user)
+                  <option value="{{ $user->id }}">{{ $user->name }}</option>
+              @endforeach
+          </select>
+      </div>
 
         <div class="mb-3">
           <label for="cause_of_malfunction" class="form-label">Arıza Nedeni</label>

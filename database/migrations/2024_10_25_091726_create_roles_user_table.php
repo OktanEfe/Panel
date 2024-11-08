@@ -6,24 +6,28 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
-    {
-        Schema::create('roles_user', function (Blueprint $table) {
-          $table->id();
-          $table->foreignId('user_id')->constrained()->onDelete('cascade');
-          $table->foreignId('role_id')->constrained()->onDelete('cascade');
-          $table->timestamps();
-        });
-    }
+  /**
+   * Run the migrations.
+   */
+  public function up(): void
+  {
+    Schema::disableForeignKeyConstraints(); // Foreign key kısıtlamalarını geçici olarak devre dışı bırakın
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
-    {
-        Schema::dropIfExists('roles_user');
-    }
+    Schema::create('roles_user', function (Blueprint $table) {
+      $table->id();
+      $table->foreignId('user_id')->constrained()->onDelete('cascade');
+      $table->foreignId('role_id')->constrained()->onDelete('cascade');
+      $table->timestamps();
+    });
+    Schema::enableForeignKeyConstraints(); // Foreign key kısıtlamalarını yeniden etkinleştirin
+
+  }
+
+  /**
+   * Reverse the migrations.
+   */
+  public function down(): void
+  {
+    Schema::dropIfExists('roles_user');
+  }
 };

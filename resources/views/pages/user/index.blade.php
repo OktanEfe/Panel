@@ -58,7 +58,7 @@
                 </div>
               </td>
               <td class="text-truncate">{{$user->email}}</td>
-              <td class="text-truncate"><i class="mdi mdi-laptop mdi-24px text-danger me-1"></i> Admin{{$user->role}}</td>
+              <td class="text-truncate"><i class="mdi mdi-laptop mdi-24px text-danger me-1"></i> {{ $user->role->name }}</td>
               <td class="text-truncate">
                <a href="{{ route('user.edit', $user->id) }}" class="mdi mdi-pencil"></a>
                <form action="{{ route('user.destroy', $user->id) }}" method="POST" style="display: inline;">

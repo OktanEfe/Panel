@@ -114,7 +114,7 @@ Route::get('/form/layouts-horizontal', [HorizontalForm::class, 'index'])->name('
 Route::get('/tables/basic', [TablesBasic::class, 'index'])->name('tables-basic');
 
 
-Route::resource('fault', FaultController::class);
+Route::resource('fault', FaultController::class)->only(['index', 'edit', 'update', 'destroy', 'store', 'create']);
 
 //machines
 

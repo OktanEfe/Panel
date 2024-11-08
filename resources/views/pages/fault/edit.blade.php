@@ -62,7 +62,7 @@
         <!-- Arıza Açıklaması -->
         <div class="mb-3">
             <label for="fault_description" class="form-label">Arıza Açıklaması</label>
-            <textarea class="form-control" id="fault_description" name="description" rows="3" required>{{ $fault->Description }}</textarea>
+            <textarea class="form-control" id="description" name="description" rows="3" required>{{ $fault->description }}</textarea>
         </div>
 
         <button type="submit" class="btn btn-primary">Kaydet</button>
