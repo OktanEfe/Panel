@@ -1,9 +1,6 @@
 {
   "menu": [
     {
-      "menuHeader": "Apps & Pages"
-    },
-    {
       "name": "Fault",
       "icon": "menu-icon tf-icons mdi mdi-flip-to-front",
       "slug": "Fault",
@@ -78,8 +75,10 @@
         "Pro"
       ]
     },
+
     {
-      "menuHeader": "Apps & Pages"
+      "menuHeader":"Hesabım"
+      
     },
     {
       "name": "Account Settings",

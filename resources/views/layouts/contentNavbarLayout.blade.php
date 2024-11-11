@@ -1,5 +1,5 @@
 @extends('layouts/commonMaster' )
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @php
 /* Display elements */
 $contentNavbar = true;

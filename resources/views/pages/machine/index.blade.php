@@ -4,11 +4,12 @@
 
 @section('content')
 
+
 @if(session('success'))
-    <div class="alert alert-success alert-dismissible custom-alert fade show" role="alert">
-        <strong>Başarılı!</strong> {{ session('success') }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Başarılı!</strong> {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
 @endif
 
 @if(session('error'))
@@ -29,10 +30,13 @@
             <!-- Makineyi Düzenle ve Sil Butonları -->
             <button class="btn btn-warning btn-sm" onclick="openEditMachineModal({{ $machine->id }}, '{{ $machine->machine_name }}')">Makineyi Düzenle</button>
 
-            <form action="{{ route('machine.destroy', $machine->id) }}" method="POST" style="display:inline;">
+            <!-- Silme Butonu -->
+            <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete({{ $machine->id }})">Makineyi Sil</button>
+
+            <!-- Silme Formu (Gizli) -->
+            <form id="delete-form-{{ $machine->id }}" action="{{ route('machine.destroy', $machine->id) }}" method="POST" style="display: none;">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Bu makineyi silmek istediğinize emin misiniz?')">Makineyi Sil</button>
             </form>
         </div>
     </div>
@@ -186,6 +190,53 @@
     // Modalı aç
     new bootstrap.Modal(document.getElementById('addPartModal')).show();
   }
+
+//delete için 
+function confirmDelete(machineId) {
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, Delete It!',
+        cancelButtonText: 'Cancel'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Formu gönder
+            document.getElementById(`delete-form-${machineId}`).submit();
+        }
+    });
+}
+
+// İşlem sonrası başarı veya hata mesajını gösterme
+document.addEventListener("DOMContentLoaded", function() {
+    @if(session('success'))
+        Swal.fire({
+            icon: 'success',
+            title: 'Deleted!',
+            text: "{{ session('success') }}",
+            confirmButtonColor: '#4CAF50',
+            confirmButtonText: 'OK'
+        });
+    @endif
+
+    @if(session('error'))
+        Swal.fire({
+            icon: 'error',
+            title: 'Error!',
+            text: "{{ session('error') }}",
+            confirmButtonColor: '#d33',
+            confirmButtonText: 'OK'
+        });
+    @endif
+});
+
+
+
+
+
 </script>
 
 @endsection
