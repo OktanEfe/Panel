@@ -4,15 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Permission\Models\Role as SpatieRole;
+use App\Models\User;
+use App\Models\Permission;
 
-class Role extends Model
+
+class Role extends SpatieRole
 {
-  public function permissions()
+  public function permission()
   {
     return $this->belongsToMany(Permission::class, 'permission_role');
   }
 
-  public function users()
+  public function user()
   {
     return $this->belongsToMany(User::class, 'role_user');
   }

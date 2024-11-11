@@ -40,7 +40,7 @@
       <div class="card-header">
         <div class="d-flex align-items-center justify-content-between">
           <h5 class="card-title m-0 me-2">Makine Performansı!</h5>
-          
+
         </div>
         <p class="mt-3"><span class="fw-medium">48.5% Performans!</span></p>
       </div>
@@ -85,7 +85,7 @@
               </div>
             </div>
           </div>
-          
+
         </div>
       </div>
     </div>
@@ -197,14 +197,14 @@
   <!-- Four Cards -->
       <!--/ Total Profit line chart -->
       <!-- Total Profit Weekly Project -->
-      
+
 
   <!-- Sales by Countries -->
   <div class="col-xl-4 col-md-6">
     <div class="card">
       <div class="card-header d-flex align-items-center justify-content-between">
         <h5 class="card-title m-0 me-2">En Performanlı Makineler</h5>
-        
+
       </div>
       <div class="card-body">
         <div class="d-flex flex-wrap justify-content-between align-items-center mb-4">
@@ -293,7 +293,7 @@
   <!--/ Sales by Countries -->
 
   <!-- Deposit / Withdraw -->
-  
+
 
   <!-- Data Tables -->
   <div class="col-12">
@@ -314,7 +314,7 @@
             <tr>
               <td>
                 <div class="d-flex align-items-center">
-                    <!-- Data Tables 
+                    <!-- Data Tables
                   <div class="avatar avatar-sm me-3">
                     <img src="{{asset('assets/img/avatars/1.png')}}" alt="Avatar" class="rounded-circle">
                   </div>
