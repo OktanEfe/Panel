@@ -9,13 +9,19 @@ use App\Models\Permission;
 
 class PermissionSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
-    public function run(): void
-    {
-      Permission::create(['name' => 'create-user', 'description' => 'Can create users']);
-      Permission::create(['name' => 'edit-user', 'description' => 'Can edit users']);
-      Permission::create(['name' => 'delete-user', 'description' => 'Can delete users']);
+  /**
+   * Run the database seeds.
+   */
+  public function run(): void
+  {
+    $permissions = [
+      'view_dashboard',
+      'manage_users',
+      'edit_posts',
+      // Diğer izinleri buraya ekleyin
+    ];
+    foreach ($permissions as $permission) {
+      Permission::create(['name' => $permission, 'guard_name' => 'web']);
     }
+  }
 }

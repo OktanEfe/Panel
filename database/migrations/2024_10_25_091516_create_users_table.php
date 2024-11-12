@@ -15,7 +15,8 @@ return new class extends Migration
       $table->id();
       $table->string('name');
       $table->string('surname');
-      $table->foreignId('role_id')->default(1)->constrained('roles')->onDelete('cascade')->nullable();
+      $table->unsignedBigInteger('role_id')->nullable();
+      $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
       $table->string('phone_number');
       $table->string('email')->unique();
       $table->timestamp('email_verified_at')->nullable();

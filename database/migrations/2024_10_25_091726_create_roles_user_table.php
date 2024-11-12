@@ -19,8 +19,6 @@ return new class extends Migration
       $table->foreignId('role_id')->constrained()->onDelete('cascade');
       $table->timestamps();
     });
-    Schema::enableForeignKeyConstraints(); // Foreign key kısıtlamalarını yeniden etkinleştirin
-
   }
 
   /**
