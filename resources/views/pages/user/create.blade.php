@@ -60,15 +60,15 @@
           </div>
 
           <div class="form-group">
-            <label for="machineSelect">Rol Seçimi</label>
-            <select id="role_id" class="form-control" required>
+            <label for="role_id">Rol Seçimi</label>
+            <select id="role_id" name="role_id" class="form-control" required>
                 <option value="">User Seçin</option>
-
                 <option value="1">Admin</option>
-                <option value="2">Operator</option>
-                <option value="3">Supervision</option>
+                <option value="2">Supervisor</option>
+                <option value="3">Operator</option>
             </select>
         </div>
+
 
           <button type="submit" class="btn btn-primary mt-3">Add</button>
         </form>

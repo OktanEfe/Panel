@@ -10,28 +10,42 @@ use App\Models\Role; // Role modelini dahil edin
 class UserController extends Controller
 {
   public function create()
-  {
-    // Sadece "admin" rolünü çekiyoruz (gerekirse bu kısmı ileride genişletebilirsiniz)
-    $roles = Role::where('name', 'admin')->pluck('name', 'id');
+{
+    $roles = Role::pluck('name', 'id');
     return view('pages.user.create', compact('roles'));
-  }
+}
 
-  public function store(UserRequest $request)
-  {
-    // Kullanıcı kaydında role_id alanını varsayılan olarak "admin" olacak şekilde ekliyoruz
+
+public function store(UserRequest $request)
+{
+//  dd($request->role_id);
+
+    // Validated edilmiş veriyi al
     $userData = $request->validated();
-    $userData['role_id'] = $userData['role_id'] ?? 1; // role_id yoksa 1 (admin) olarak ayarla
 
-    User::create($userData);
+    $user = User::create([
+        'name' => $userData['name'],
+        'surname' => $userData['surname'],
+        'phone_number' => $userData['phone_number'],
+        'email' => $userData['email'],
+        'password' => bcrypt($userData['password']),
+    ]);
+
+    if (isset($userData['role_id'])) {
+        $role = Role::findById($userData['role_id']);
+        $user->assignRole($role);
+    }
 
     return redirect()->route('user.index')->with('success', 'User added successfully');
-  }
+}
 
   public function index()
-  {
-    $users = User::with('role')->get();
+{
+    $users = User::with('role')->get(); // Rol ile birlikte yükleyin
+
     return view('pages.user.index', compact('users'));
-  }
+}
+
 
   public function edit($id)
   {

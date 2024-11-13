@@ -45,30 +45,41 @@
           </thead>
           <tbody>
             @foreach($users as $user)
-            <tr>
-              <td>
+    @if($user)
+        <tr>
+            <td>
                 <div class="d-flex align-items-center">
-                  <div class="avatar avatar-sm me-3">
-                    <img src="{{asset('assets/img/avatars/1.png')}}" alt="Avatar" class="rounded-circle">
-                  </div>
-                  <div>
-                    <h6 class="mb-0 text-truncate">{{$user->name}}</h6>
-                    <small class="text-truncate">{{$user->surname}}</small>
-                  </div>
+                    <div class="avatar avatar-sm me-3">
+                        <img src="{{ asset('assets/img/avatars/1.png') }}" alt="Avatar" class="rounded-circle">
+                    </div>
+                    <div>
+                        <h6 class="mb-0 text-truncate">{{ $user->name ?? 'No Name' }}</h6>
+                        <small class="text-truncate">{{ $user->surname ?? 'No Surname' }}</small>
+                    </div>
                 </div>
-              </td>
-              <td class="text-truncate">{{$user->email}}</td>
-              <td class="text-truncate"><i class="mdi mdi-laptop mdi-24px text-danger me-1"></i> {{ $user->role->name }}</td>
-              <td class="text-truncate">
-               <a href="{{ route('user.edit', $user->id) }}" class="mdi mdi-pencil"></a>
-               <form action="{{ route('user.destroy', $user->id) }}" method="POST" style="display: inline;">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class=" btn mdi mdi-delete" onclick="return confirm('Are you sure?')"></button>
-            </form>
-              </td>
-            </tr>
-            @endforeach
+            </td>
+            <td class="text-truncate">{{ $user->email ?? 'No Email' }}</td>
+            <td class="text-truncate">
+                <i class="mdi mdi-laptop mdi-24px text-danger me-1"></i> {{ $user->role->name ?? 'No Role' }}
+            </td>
+            <td class="text-truncate">
+                <a href="{{ route('user.edit', $user->id) }}" class="mdi mdi-pencil"></a>
+                <form action="{{ route('user.destroy', $user->id) }}" method="POST" style="display: inline;">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" style="background: none; border: none; color: red;">
+                        <i class="mdi mdi-delete"></i>
+                    </button>
+                </form>
+            </td>
+        </tr>
+    @else
+        <tr>
+            <td colspan="4">User not found</td>
+        </tr>
+    @endif
+@endforeach
+
           </tbody>
         </table>
       </div>
