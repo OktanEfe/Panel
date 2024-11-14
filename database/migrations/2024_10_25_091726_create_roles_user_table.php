@@ -11,7 +11,6 @@ return new class extends Migration
    */
   public function up(): void
   {
-    Schema::disableForeignKeyConstraints(); // Foreign key kısıtlamalarını geçici olarak devre dışı bırakın
 
     Schema::create('roles_user', function (Blueprint $table) {
       $table->id();

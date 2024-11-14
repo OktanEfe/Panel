@@ -10,41 +10,41 @@ use App\Models\Role; // Role modelini dahil edin
 class UserController extends Controller
 {
   public function create()
-{
-    $roles = Role::pluck('name', 'id');
+  {
+    $roles = Role::all();
     return view('pages.user.create', compact('roles'));
-}
+  }
 
 
-public function store(UserRequest $request)
-{
-//  dd($request->role_id);
+  public function store(UserRequest $request)
+  {
+    //  dd($request->role_id);
 
     // Validated edilmiş veriyi al
     $userData = $request->validated();
 
     $user = User::create([
-        'name' => $userData['name'],
-        'surname' => $userData['surname'],
-        'phone_number' => $userData['phone_number'],
-        'email' => $userData['email'],
-        'password' => bcrypt($userData['password']),
+      'name' => $userData['name'],
+      'surname' => $userData['surname'],
+      'phone_number' => $userData['phone_number'],
+      'email' => $userData['email'],
+      'password' => bcrypt($userData['password']),
     ]);
 
-    if (isset($userData['role_id'])) {
-        $role = Role::findById($userData['role_id']);
-        $user->assignRole($role);
-    }
+    $role = Role::find($request->role_id);
+
+    // Kullanıcıya rolü ata
+    $user->roles()->attach($role);
 
     return redirect()->route('user.index')->with('success', 'User added successfully');
-}
+  }
 
   public function index()
-{
-    $users = User::with('role')->get(); // Rol ile birlikte yükleyin
+  {
+    $users = User::with('roles')->get(); // Rol ile birlikte yükleyin
 
     return view('pages.user.index', compact('users'));
-}
+  }
 
 
   public function edit($id)
@@ -69,10 +69,20 @@ public function store(UserRequest $request)
 
   public function destroy($id)
   {
-    // Kullanıcıyı silme işlemi
+    // Kullanıcıyı ilişkisi ile birlikte buluyoruz.
     $user = User::findOrFail($id);
+
+    // İlgili rollerden ayır
+    if ($user->roles() instanceof \Illuminate\Database\Eloquent\Relations\BelongsToMany) {
+      $user->roles()->detach();
+    } else {
+      // Eğer ilişki düzgün değilse hata mesajı göster
+      return redirect()->route('user.index')->with('error', 'Roller ilişkisi bulunamadı.');
+    }
+
+    // Kullanıcıyı sil
     $user->delete();
 
-    return redirect()->route('user.index')->with('success', 'Kullanıcı başarılı bir şekilde silindi!!!');
+    return redirect()->route('user.index')->with('success', 'Kullanıcı başarılı bir şekilde silindi!');
   }
 }

@@ -62,10 +62,10 @@
           <div class="form-group">
             <label for="role_id">Rol Seçimi</label>
             <select id="role_id" name="role_id" class="form-control" required>
-                <option value="">User Seçin</option>
-                <option value="1">Admin</option>
-                <option value="2">Supervisor</option>
-                <option value="3">Operator</option>
+                <option value="">Rol Seçin</option>
+                @foreach ($roles as $role)
+                    <option value="{{ $role->id }}">{{ $role->name }}</option>
+                @endforeach
             </select>
         </div>
 

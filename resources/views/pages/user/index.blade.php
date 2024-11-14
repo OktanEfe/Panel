@@ -59,9 +59,11 @@
                 </div>
             </td>
             <td class="text-truncate">{{ $user->email ?? 'No Email' }}</td>
-            <td class="text-truncate">
-                <i class="mdi mdi-laptop mdi-24px text-danger me-1"></i> {{ $user->role->name ?? 'No Role' }}
-            </td>
+            <td>
+              @foreach ($user->roles as $role)
+                  {{ $role->name }}
+              @endforeach
+          </td>
             <td class="text-truncate">
                 <a href="{{ route('user.edit', $user->id) }}" class="mdi mdi-pencil"></a>
                 <form action="{{ route('user.destroy', $user->id) }}" method="POST" style="display: inline;">
