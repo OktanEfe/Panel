@@ -10,28 +10,42 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use App\Models\Role;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
   use HasApiTokens, HasFactory, Notifiable, HasRoles;
+  use SoftDeletes;
 
   // Fixed method name to assignRole
   public function assignRole($roleName)
   {
+    // Role adıyla eşleşen rolü bul
     $role = Role::where('name', $roleName)->first();
+
+    if (!$role) {
+      throw new \Exception("Role '{$roleName}' not found.");
+    }
+
+    // Eğer kullanıcı zaten bu role sahipse, tekrar eklenmesin
+    if ($this->roles()->where('id', $role->id)->exists()) {
+      return;
+    }
+
+    // Kullanıcıya rol ata
     $this->roles()->attach($role);
   }
+
 
   public function roles()
   {
     return $this->belongsToMany(Role::class, 'roles_user', 'user_id', 'role_id');
   }
 
-  public function hasRole($role)
+  public function hasRole($roleName)
   {
-    return $this->roles()->where('name', $role)->exists();
+    return $this->roles()->where('name', $roleName)->exists();
   }
-
   public function permissions()
   {
     return $this->roles()->with('permissions')->get()->pluck('permissions')->flatten();

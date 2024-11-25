@@ -6,6 +6,7 @@ use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Role; // Role modelini dahil edin
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -51,38 +52,55 @@ class UserController extends Controller
   {
     // Belirli bir kullanıcıyı düzenlemek için
     $user = User::findOrFail($id);
-    $roles = Role::where('name', 'admin')->pluck('name', 'id');
+
+    // Tüm rolleri al
+    $roles = Role::all(); // Pluck yerine tüm rolleri alarak dinamik form oluşturuyoruz
+
     return view('pages.user.edit', compact('user', 'roles'));
   }
 
-  public function update(UserRequest $request, $id)
+
+  public function update(Request $request, $id)
   {
-    // Kullanıcıyı güncelleme
     $user = User::findOrFail($id);
-    $userData = $request->validated();
-    $userData['role_id'] = $userData['role_id'] ?? $user->role_id; // Mevcut role_id'yi koru veya yenisi ile güncelle
 
-    $user->update($userData);
+    // Gelen verileri doğrula
+    $validated = $request->validate([
+      'name' => 'required|string|max:255',
+      'surname' => 'required|string|max:255',
+      'email' => 'required|email|unique:users,email,' . $id, // Unique kontrol
+      'phone_number' => 'required|string|max:15',
+      'password' => 'nullable|string|min:8', // Parola isteğe bağlı
+      'role_id' => 'required|exists:roles,id', // Rolün geçerli olduğundan emin ol
+    ]);
 
-    return redirect()->route('user.index')->with('success', 'Kullanıcı güncellendi!!');
+    // Kullanıcı bilgilerini güncelle
+    $user->update([
+      'name' => $validated['name'],
+      'surname' => $validated['surname'],
+      'email' => $validated['email'],
+      'phone_number' => $validated['phone_number'],
+      'password' => $validated['password'] ? bcrypt($validated['password']) : $user->password,
+    ]);
+
+    // Kullanıcının rolünü güncelle
+    $user->roles()->sync([$validated['role_id']]);
+
+    return redirect()->route('user.index')->with('success', 'Kullanıcı başarıyla güncellendi!');
   }
 
   public function destroy($id)
   {
-    // Kullanıcıyı ilişkisi ile birlikte buluyoruz.
     $user = User::findOrFail($id);
 
-    // İlgili rollerden ayır
-    if ($user->roles() instanceof \Illuminate\Database\Eloquent\Relations\BelongsToMany) {
-      $user->roles()->detach();
-    } else {
-      // Eğer ilişki düzgün değilse hata mesajı göster
-      return redirect()->route('user.index')->with('error', 'Roller ilişkisi bulunamadı.');
-    }
+    // dd($user);
 
-    // Kullanıcıyı sil
-    $user->delete();
+    $user->deleted_at = now();
+    $user->save();
 
-    return redirect()->route('user.index')->with('success', 'Kullanıcı başarılı bir şekilde silindi!');
+    // Kullanıcıyı tamamen sil
+    // $user->forceDelete();
+
+    return redirect()->route('user.index')->with('success', 'Kullanıcı başarıyla tamamen silindi!');
   }
 }
